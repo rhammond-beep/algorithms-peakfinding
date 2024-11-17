@@ -17,8 +17,17 @@ type NLogNPeakFinder struct {
 
 func (p *LogNPeakFinder) FindPeak(numbers []int) (int, error) {
 	var peak int
+	input_size := len(numbers)
 
-	if len(numbers) == 1 {
+	if input_size == 1 {
+		return numbers[0], nil
+	}
+
+	if numbers[0] >= numbers[1] {
+		return numbers[0], nil
+	}
+
+	if numbers[len(numbers)-1] >= numbers[len(numbers)-2] {
 		return numbers[0], nil
 	}
 
