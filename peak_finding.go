@@ -5,19 +5,39 @@ type PeakFinder interface {
 	FindPeak(numbers []int) (int, error)
 }
 
+// Less Efficient Peak Finder
 type LogNPeakFinder struct {
 	numbers []int
 }
 
+// More Efficient Peak Finder
 type NLogNPeakFinder struct {
 	numbers []int
 }
 
-// TODO - implement
 func (p *LogNPeakFinder) FindPeak(numbers []int) (int, error) {
+	var peak int
 
+	if len(numbers) == 1 {
+		return numbers[0], nil
+	}
+
+	for i := 1; i < len(numbers)-1; i++ {
+		if numbers[i] >= numbers[i+1] && numbers[i] >= numbers[i-1] {
+			peak = numbers[i]
+			break
+		}
+	}
+
+	return peak, nil
 }
 
-// TODO - implement
 func (p *NLogNPeakFinder) FindPeak(numbers []int) (int, error) {
+	var peak int
+
+	if len(numbers) == 1 {
+		return numbers[0], nil
+	}
+
+	return peak, nil
 }
