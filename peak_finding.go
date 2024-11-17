@@ -9,7 +9,7 @@ type LogNPeakFinder struct {
 	numbers []int
 }
 
-type NlogNPeakFinder struct {
+type NLogNPeakFinder struct {
 	numbers []int
 }
 
@@ -19,8 +19,5 @@ func (p *LogNPeakFinder) FindPeak(numbers []int) (int, error) {
 }
 
 // TODO - implement
-func (p *NlogNPeakFinder) FindPeak(numbers []int) (int, error) {
-}
-
-func FindPeak() {
+func (p *NLogNPeakFinder) FindPeak(numbers []int) (int, error) {
 }
