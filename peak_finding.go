@@ -42,12 +42,8 @@ func (p *LinearPeakFinder) FindPeak(numbers []int) (int, error) {
 }
 
 /*
-If numbers[n/2] < numbers[n/2-1]
-  - Then look for a peak from a[1] a[n/2-1]
-  - If numbers[n/2] < numbers[n/2+1]
-    then look for a peak from a[n/2+1] ...a[n]
-    else n/2 is a peak
-*/
+* The more efficient recursive implementation
+ */
 func (p *NLogNPeakFinder) FindPeak(numbers []int) (int, error) {
 	n := len(numbers)
 	if n == 1 { // Handle the successful base case
