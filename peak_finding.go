@@ -41,12 +41,23 @@ func (p *LogNPeakFinder) FindPeak(numbers []int) (int, error) {
 	return peak, nil
 }
 
+/*
+If numbers[n/2] < numbers[n/2-1]
+  - Then look for a peak from a[1] a[n/2-1]
+  - If numbers[n/2] < numbers[n/2+1]
+    then look for a peak from a[n/2+1] ...a[n]
+    else n/2 is a peak
+*/
 func (p *NLogNPeakFinder) FindPeak(numbers []int) (int, error) {
-	var peak int
-
-	if len(numbers) == 1 {
+	n := len(numbers)
+	if n == 1 {
 		return numbers[0], nil
 	}
-
-	return peak, nil
+	if numbers[n/2] <= numbers[(n/2)-1] {
+		return p.FindPeak(numbers[:(n / 2)])
+	} else if numbers[n/2] <= numbers[(n/2)+1] {
+		return p.FindPeak(numbers[(n / 2):])
+	} else {
+		return numbers[n/2], nil
+	}
 }
