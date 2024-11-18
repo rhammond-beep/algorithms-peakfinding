@@ -6,7 +6,7 @@ type PeakFinder interface {
 }
 
 // Less Efficient Peak Finder
-type LogNPeakFinder struct {
+type LinearPeakFinder struct {
 	numbers []int
 }
 
@@ -15,7 +15,7 @@ type NLogNPeakFinder struct {
 	numbers []int
 }
 
-func (p *LogNPeakFinder) FindPeak(numbers []int) (int, error) {
+func (p *LinearPeakFinder) FindPeak(numbers []int) (int, error) {
 	var peak int
 	input_size := len(numbers)
 
@@ -50,7 +50,7 @@ If numbers[n/2] < numbers[n/2-1]
 */
 func (p *NLogNPeakFinder) FindPeak(numbers []int) (int, error) {
 	n := len(numbers)
-	if n == 1 {
+	if n == 1 { // Handle the successful base case
 		return numbers[0], nil
 	}
 	if numbers[n/2] <= numbers[(n/2)-1] {
