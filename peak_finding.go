@@ -7,12 +7,12 @@ type PeakFinder interface {
 
 // Less Efficient Peak Finder
 type LinearPeakFinder struct {
-	numbers []int
+	Numbers []int
 }
 
 // More Efficient Peak Finder
 type NLogNPeakFinder struct {
-	numbers []int
+	Numbers []int
 }
 
 func (p *LinearPeakFinder) FindPeak(numbers []int) (int, error) {
