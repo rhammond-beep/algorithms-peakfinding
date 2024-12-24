@@ -2,7 +2,7 @@ package peakfinder
 
 // Accept a 1D array of integers, retun the first peak otherwise return an error
 type PeakFinder interface {
-	FindPeak(numbers []int) (int, error)
+	FindPeak() (int, error)
 }
 
 // Less Efficient Peak Finder
@@ -12,28 +12,27 @@ type LinearPeakFinder struct {
 
 // More Efficient Peak Finder
 type NLogNPeakFinder struct {
-	Numbers []int
 }
 
-func (p *LinearPeakFinder) FindPeak(numbers []int) (int, error) {
+func (p *LinearPeakFinder) FindPeak() (int, error) {
 	var peak int
-	input_size := len(numbers)
+	input_size := len(p.Numbers)
 
 	if input_size == 1 {
-		return numbers[0], nil
+		return p.Numbers[0], nil
 	}
 
-	if numbers[0] >= numbers[1] {
-		return numbers[0], nil
+	if p.Numbers[0] >= p.Numbers[1] {
+		return p.Numbers[0], nil
 	}
 
-	if numbers[len(numbers)-1] >= numbers[len(numbers)-2] {
-		return numbers[0], nil
+	if p.Numbers[len(p.Numbers)-1] >= p.Numbers[len(p.Numbers)-2] {
+		return p.Numbers[0], nil
 	}
 
-	for i := 1; i < len(numbers)-1; i++ {
-		if numbers[i] >= numbers[i+1] && numbers[i] >= numbers[i-1] {
-			peak = numbers[i]
+	for i := 1; i < len(p.Numbers)-1; i++ {
+		if p.Numbers[i] >= p.Numbers[i+1] && p.Numbers[i] >= p.Numbers[i-1] {
+			peak = p.Numbers[i]
 			break
 		}
 	}
