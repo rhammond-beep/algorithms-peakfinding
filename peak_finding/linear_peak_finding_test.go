@@ -4,7 +4,7 @@ import "testing"
 
 func TestLogNPeakFinderSmallCase(t *testing.T) {
 	input := []int{1, 2, 3, 4, 6, 5}
-	finder := &LinearPeakFinder{numbers: input}
+	finder := &LinearPeakFinder{Numbers: input}
 	want := 6
 	peak, err := finder.FindPeak(input)
 	if err != nil {
@@ -16,7 +16,7 @@ func TestLogNPeakFinderSmallCase(t *testing.T) {
 
 func TestLogNPeakFinderSingleValue(t *testing.T) {
 	input := []int{1}
-	finder := &LinearPeakFinder{numbers: input}
+	finder := &LinearPeakFinder{Numbers: input}
 	want := 1
 	peak, err := finder.FindPeak(input)
 	if err != nil {
@@ -28,7 +28,7 @@ func TestLogNPeakFinderSingleValue(t *testing.T) {
 
 func TestLogNPeakFinderAllValuesAreTheSame(t *testing.T) {
 	input := []int{0, 0, 0, 0, 0}
-	finder := &LinearPeakFinder{numbers: input}
+	finder := &LinearPeakFinder{Numbers: input}
 	want := 0
 	peak, err := finder.FindPeak(input)
 	if err != nil {
@@ -40,7 +40,7 @@ func TestLogNPeakFinderAllValuesAreTheSame(t *testing.T) {
 
 func TestEdgePeaksAreCorrectlyHandled(t *testing.T) {
 	input := []int{1, 0}
-	finder := &LinearPeakFinder{numbers: input}
+	finder := &LinearPeakFinder{Numbers: input}
 	want := 1
 	peak, err := finder.FindPeak(input)
 	if err != nil {
